@@ -1,0 +1,10 @@
+Lite användbara grejer
+
+
+greater<int>{}
+
+//Exempel på användning...
+sort(begin(v), end(v), greater<int>{});
+//dvs sorterar v (exempelvis vector) störst först
+
+
