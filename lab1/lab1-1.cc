@@ -102,7 +102,7 @@ int main()
     transform(deq.begin(), deq.end(), deq.begin(), div_by_2);
 
     // 16.
-    for_each(deq.begin(), deq.end(), print);
+    for_each(deq.cbegin(), deq.cend(), print);
 
     cout << endl;
     return 0;
