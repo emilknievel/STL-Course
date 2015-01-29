@@ -46,11 +46,11 @@ int main()
     cout << endl << endl;
 
     // 5.
-    cout << "Minst: " << *min_element(begin(v), end(v)) << endl
-         << "Störst: " << *max_element(begin(v), end(v)) << endl << endl;
+    cout << "Minst: " << *min_element(v.cbegin(), v.cend()) << endl
+         << "Störst: " << *max_element(v.cbegin(), v.cend()) << endl << endl;
 
     // 6.
-    sort(begin(v), end(v));
+    sort(v.begin(), v.end());
 
     // 7.
     cout << "Sorterat:" << endl;
@@ -74,7 +74,7 @@ int main()
     // 10.
     vector<int> v2{};
     v2.resize(v.size(), 0);
-    reverse_copy(v.begin(), v.end(), v2.begin());
+    reverse_copy(v.cbegin(), v.cend(), v2.begin());
 
     // 11.
     cout << "Innehåll v2:" << endl;
@@ -85,7 +85,7 @@ int main()
     cout << endl << endl;
 
     // 12.
-    list<int> lst(v.begin(), v.end());
+    list<int> lst(v.cbegin(), v.cend());
 
     // 13.
     cout << "Innehåll lst:" << endl;
@@ -96,12 +96,13 @@ int main()
     cout << endl << endl;
 
     // 14.
-    deque<double> deq(v.rbegin(), v.rend());
+    deque<double> deq(v.crbegin(), v.crend());
 
     // 15.
     transform(deq.begin(), deq.end(), deq.begin(), div_by_2);
 
     // 16.
+    cout << "Innehåll deq, efter division:" << endl;
     for_each(deq.cbegin(), deq.cend(), print);
 
     cout << endl;
