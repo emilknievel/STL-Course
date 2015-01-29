@@ -35,6 +35,7 @@ int main()
     {
         v.push_back(data);
     }
+    file.close();
 
     // 4.
     cout << "Filens innehåll: " << endl;
