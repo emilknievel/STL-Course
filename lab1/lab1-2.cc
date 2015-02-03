@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
     istream_iterator<int> eos{};
 
     vector<int> v(file_it, eos);
-    
+
     file.close();
 
     // 4.
