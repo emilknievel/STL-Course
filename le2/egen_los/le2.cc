@@ -13,19 +13,19 @@ struct Word_Entry {
 using Word_List = vector<Word_Entry>;
 
 string lower_case(string str);
-void insert(string ord, Word_List ordlista);
+void insert(string ord, Word_List& ordlista);
 void print(Word_List ordlista);
 
 int main()
 {
-    string x;
     Word_List wl;
+    string x;
 
     while(cin >> x)
     {
         insert(lower_case(x), wl);
+        x = "";
     }
-
     print(wl);
 
     return 0;
@@ -49,7 +49,23 @@ void print(Word_List ordlista)
     }
 }
 
-void insert(string ord, Word_List ordlista)
+void insert(string ord, Word_List& ordlista)
 {
-    
+    if (ordlista.size() > 0)
+    {
+        for (unsigned int i = 0; i < ordlista.size(); ++i)
+        {
+            if (ordlista.at(i).word == ord)
+            {
+                ordlista.at(i).word_count += 1;
+                return;
+            }
+        }
+    }
+
+    Word_Entry w_entry{ord, 1};
+
+    ordlista.push_back(w_entry);
+    return;
+
 }
