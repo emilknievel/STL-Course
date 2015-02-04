@@ -53,39 +53,51 @@ int main(int argc, char* argv[])
 
 string lower_case(string str)
 {
-    for (unsigned int i = 0; i < str.size(); ++i)
+    for (auto it = begin(str); it != end(str); ++it)
     {
-        str.at(i) = tolower(str.at(i));
+        *it = tolower(*it);
     }
     return str;
 }
 
 void print(Word_List ordlista)
 {
-    for (unsigned int i = 0; i < ordlista.size(); ++i)
+    for (auto it = begin(ordlista); it != end(ordlista); ++it)
     {
-        cout << setw(20) << right << ordlista.at(i).word << "  " << left
-             << ordlista.at(i).word_count << endl;
+        cout << setw(20) << right << it->word << "  " << left
+             << it->word_count << endl;
     }
 }
 
 void insert(string ord, Word_List& ordlista)
 {
-    if (!ordlista.empty())
+    if (ordlista.empty())
     {
-        for (unsigned int i = 0; i < ordlista.size(); ++i)
+        ordlista.push_back( {ord, 1} );
+        return;
+    }
+
+    for (auto it = begin(ordlista); it != end(ordlista); ++it)
+    {
+        if (it->word == ord)
         {
-            if (ordlista.at(i).word == ord)
-            {
-                ordlista.at(i).word_count += 1;
-                return;
-            }
+            it->word_count++;
+            return;
+        }
+
+        else if (it->word > ord) // Rätt plats funnen
+        {
+            Word_List temp(make_move_iterator(it),
+			   make_move_iterator(end(ordlista)));
+
+            ordlista.erase(it, end(ordlista));
+            ordlista.push_back( {ord, 1} );
+
+            copy(begin(temp), end(temp), back_inserter(ordlista));
+            return;
         }
     }
 
-    Word_Entry w_entry{ord, 1};
-
-    ordlista.push_back(w_entry);
+    ordlista.push_back( {ord, 1} );
     return;
-
 }

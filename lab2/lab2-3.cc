@@ -6,7 +6,18 @@
 
 using namespace std;
 
-struct Word_Entry {
+class Word_Entry
+{
+public:
+    Word_Entry(string the_word)
+	: word{the_word}, word_count{1}
+	{}
+
+    string get_word() { return word; }
+    unsigned int get_count() { return word_count; }
+    void increment_count() { word_count++; }
+
+private:
     string word;
     unsigned int word_count;
 };
@@ -53,39 +64,48 @@ int main(int argc, char* argv[])
 
 string lower_case(string str)
 {
-    for (unsigned int i = 0; i < str.size(); ++i)
+    for (char& c : str)
     {
-        str.at(i) = tolower(str.at(i));
+        c = tolower(c);
     }
     return str;
 }
 
 void print(Word_List ordlista)
 {
-    for (unsigned int i = 0; i < ordlista.size(); ++i)
+    for (Word_Entry entry : ordlista)
     {
-        cout << setw(20) << right << ordlista.at(i).word << "  " << left
-             << ordlista.at(i).word_count << endl;
+        cout << setw(20) << right << entry.get_word() << "  " << left
+             << entry.get_count() << endl;
     }
 }
 
 void insert(string ord, Word_List& ordlista)
 {
-    if (!ordlista.empty())
+    if (ordlista.empty())
     {
-        for (unsigned int i = 0; i < ordlista.size(); ++i)
+	Word_Entry* entry = new Word_Entry(ord);
+	ordlista.push_back( *entry );
+	return;
+    }
+
+    for (auto it = begin(ordlista); it != end(ordlista); ++it)
+    {
+        if (it->get_word() == ord)
         {
-            if (ordlista.at(i).word == ord)
-            {
-                ordlista.at(i).word_count += 1;
-                return;
-            }
+            it->increment_count();
+            return;
+        }
+
+        else if (it->get_word() > ord) // Hittat rätt plats!
+        {
+	    Word_Entry* entry = new Word_Entry(ord);
+	    ordlista.insert(it, *entry);
+            return;
         }
     }
 
-    Word_Entry w_entry{ord, 1};
-
-    ordlista.push_back(w_entry);
+    Word_Entry* entry = new Word_Entry(ord);
+    ordlista.push_back( *entry );
     return;
-
 }
