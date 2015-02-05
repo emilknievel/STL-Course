@@ -11,7 +11,7 @@ struct Word_Entry {
     unsigned int word_count;
 };
 
-using Word_List = vector<Word_Entry>;
+typedef vector<Word_Entry> Word_List;
 
 string lower_case(string str);
 void insert(string ord, Word_List& ordlista);
