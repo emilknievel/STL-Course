@@ -39,7 +39,7 @@ int main()
 
     // 4.
     cout << "Filens innehåll: " << endl;
-    for (vector<int>::size_type i = 0; i < v.size(); ++i)
+    for (vector<int>::size_type i{0}; i < v.size(); ++i)
     {
         cout << v.at(i) << " ";
     }
@@ -54,7 +54,7 @@ int main()
 
     // 7.
     cout << "Sorterat:" << endl;
-    for (vector<int>::const_iterator it = v.cbegin(); it != v.cend(); ++it)
+    for (vector<int>::const_iterator it{ v.cbegin() }; it != v.cend(); ++it)
     {
         cout << *it << " ";
     }
@@ -72,8 +72,7 @@ int main()
     cout << endl << endl;
 
     // 10.
-    vector<int> v2{};
-    v2.resize(v.size(), 0);
+    vector<int> v2(v.size());
     reverse_copy(v.cbegin(), v.cend(), v2.begin());
 
     // 11.
@@ -89,7 +88,7 @@ int main()
 
     // 13.
     cout << "Innehåll lst:" << endl;
-    for (auto x : v)
+    for (auto x : lst)
     {
         cout << x << " ";
     }
@@ -116,6 +115,6 @@ double div_by_2(double d)
 
 void print(double d)
 {
-    cout.precision(1);
-    cout << setw(8) << fixed << d;
+    setprecision(1);
+    cout << setw(8) << d;
 }

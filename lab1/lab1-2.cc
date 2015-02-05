@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
     cout << endl << endl;
 
     // 14.
-    remove(begin(v), end(v), -1);
+    v.erase(remove(begin(v), end(v), -1), end(v));
 
     // 15.
     cout << "Innehåll v, efter remove:" << endl;
