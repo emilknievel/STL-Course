@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
 
 string lower_case(string str)
 {
-    for (unsigned int i = 0; i < str.size(); ++i)
+    for (unsigned int i{0}; i < str.size(); ++i)
     {
         str.at(i) = tolower(str.at(i));
     }
@@ -62,7 +62,7 @@ string lower_case(string str)
 
 void print(Word_List ordlista)
 {
-    for (unsigned int i = 0; i < ordlista.size(); ++i)
+    for (unsigned int i{0}; i < ordlista.size(); ++i)
     {
         cout << setw(20) << right << ordlista.at(i).word << "  " << left
              << ordlista.at(i).word_count << endl;
@@ -73,7 +73,7 @@ void insert(string ord, Word_List& ordlista)
 {
     if (!ordlista.empty())
     {
-        for (unsigned int i = 0; i < ordlista.size(); ++i)
+        for (unsigned int i{0}; i < ordlista.size(); ++i)
         {
             if (ordlista.at(i).word == ord)
             {
