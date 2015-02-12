@@ -4,9 +4,6 @@
 #include <string>
 using namespace std;
 
-//TODO: Flytta exceptionshanteringen till del 2 istället och kontrollera
-///////////////////////////////////////////////////////////////////////
-
 int main()
 {
     priority_queue< pair<int, string> > pq;
