@@ -1,24 +1,22 @@
 #include "Direction.h"
 
 // 3.
-std::ostream& operator<<(std::ostream& os, const Direction& dir)
+std::ostream& operator<<(std::ostream& os, const Direction dir)
 {
    if (dir == Up)
    {
-      std::cout << "Up";
+      return os << "Up";
    }
    else if (dir == Down)
    {
-      std::cout << "Down";
+      return os << "Down";
    }
-   else if (dir == Down)
+   else if (dir == Left)
    {
-      std::cout << "Left";
+      return os << "Left";
    }
    else
    {
-      std::cout << "Right";
+      return os << "Right";
    }
-
-   return os;
 }

@@ -1,8 +1,8 @@
 #
-# Makefile för plot
+# Makefile fÃ¶r plot
 #
-# Fungerar även för -std=c++98. Använder inget som på IDAs Solarissystem annars
-# kan kräva att LDFLAGS också anger -L/sw/gcc-${GCC4_V}/lib och -static-libstdc++.
+# Fungerar Ã¤ven fÃ¶r -std=c++98. AnvÃ¤nder inget som pÃ¥ IDAs Solarissystem annars
+# kan krÃ¤va att LDFLAGS ocksÃ¥ anger -L/sw/gcc-${GCC4_V}/lib och -static-libstdc++.
 #
 CCC      = g++
 CCFLAGS += -std=c++11 -pedantic -Wall -Wextra
@@ -23,6 +23,6 @@ plot: plot.cc Direction.h Direction.cc
 clean:
 	@ \rm -f plot a.out *.o
 
-# Kommandot 'make zap' tar även bort reservkopior (filnamn med ~ sist).
+# Kommandot 'make zap' tar Ã¤ven bort reservkopior (filnamn med ~ sist).
 zap: clean
 	@ \rm -f *~

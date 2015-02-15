@@ -7,8 +7,8 @@ using namespace std;
 
 int main()
 {
-   // Notera asymmetrin: automatisk typomvandling från uppräkningstyp
-   // till int men inte tvärt om - explicit typomvandling krävs då.
+   // Notera asymmetrin: automatisk typomvandling frÃ¥n upprÃ¤kningstyp
+   // till int men inte tvÃ¤rt om - explicit typomvandling krÃ¤vs dÃ¥.
 
    for (Direction d = Up; d <= Right; d = static_cast<Direction>(d + 1))
    {
@@ -23,11 +23,11 @@ int main()
 }
 
 /*
- * I de senare utskrifterna används typomvandling på funktionsform,
- * exempelvis 'Direction(Up - 1)'. Skillnaden jämfört med typomvandling
+ * I de senare utskrifterna anvÃ¤nds typomvandling pÃ¥ funktionsform,
+ * exempelvis 'Direction(Up - 1)'. Skillnaden jÃ¤mfÃ¶rt med typomvandling
  * med 'static_cast<Direction>(Up - 1)', liksom med dynamic_cast,
- * reinterpret_cast och const_cast, är att för dessa "specialiserade"
- * typomvandlingar görs kontroll att de används i rätt sammahang, dvs
- * för det slags typomvandlingar de är avsedda för. Fel användning
- * medför kompileringsfel.
+ * reinterpret_cast och const_cast, Ã¤r att fÃ¶r dessa "specialiserade"
+ * typomvandlingar gÃ¶rs kontroll att de anvÃ¤nds i rÃ¤tt sammahang, dvs
+ * fÃ¶r det slags typomvandlingar de Ã¤r avsedda fÃ¶r. Fel anvÃ¤ndning
+ * medfÃ¶r kompileringsfel.
  */

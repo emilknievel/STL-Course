@@ -1,21 +1,21 @@
 /*
  * plot.cc
  *
- * Använder curses skärmhanteringsfunktioner för att  i ett terminalfönster
- * plotta en väg, som bestäms av en sekvens av Up, Down, Left och Right.
+ * AnvÃ¤nder curses skÃ¤rmhanteringsfunktioner fÃ¶r att  i ett terminalfÃ¶nster
+ * plotta en vÃ¤g, som bestÃ¤ms av en sekvens av Up, Down, Left och Right.
  *
- * Kompileras med länkflaggan -lcurses
+ * Kompileras med lÃ¤nkflaggan -lcurses
  */
 #include "Direction.h"
 #include <curses.h>
-// Vissa namn i curses kommer i konflikt med namn i C++ standardbibliotek, så
-// dessa namn tas bort (det är funktionsmakron som definierats med #define):
+// Vissa namn i curses kommer i konflikt med namn i C++ standardbibliotek, sÃ¥
+// dessa namn tas bort (det Ã¤r funktionsmakron som definierats med #define):
 #undef box
 #undef clear
 #undef erase
 #undef move
 #undef refresh
-// Följande alternativa funktioner kan användas i stället:
+// FÃ¶ljande alternativa funktioner kan anvÃ¤ndas i stÃ¤llet:
 // box(win, vch, hch)  wborder(win, vch, vch, hch, hch , 0, 0, 0, 0)
 // clear()             wclear(stdscr)
 // erase()             werase(stdscr)
@@ -39,7 +39,7 @@ int main(int argc, char* argv[])
 {
    if (argc != 2)
    {
-      cout << "användning: " << argv[0] << " fil\n";
+      cout << "anvÃ¤ndning: " << argv[0] << " fil\n";
       return 1;
    }
 
@@ -47,13 +47,13 @@ int main(int argc, char* argv[])
 
    if (! input)
    {
-      cout << "kunde inte öppna filen: " << argv[1] << '\n';
+      cout << "kunde inte Ã¶ppna filen: " << argv[1] << '\n';
       return 2;
    }
 
    int   start_line, start_col;
    Route route;
-   
+
    try
    {
       read_route(input, start_line, start_col, route);
@@ -66,7 +66,7 @@ int main(int argc, char* argv[])
    }
    catch (...)
    {
-      cout << "Okänt undantag fångat\n";
+      cout << "OkÃ¤nt undantag fÃ¥ngat\n";
    }
 
    return 0;
@@ -76,32 +76,32 @@ void read_route(istream& is, int& start_line, int& start_col, Route& route)
 {
    is >> start_line >> start_col;
 
-   // Anm. istream_iterator kräver att operator>> är definierad för
-   // instansieringstypen i fråga, dvs Direction i detta fall.
-   copy(istream_iterator<Direction>(is), istream_iterator<Direction>(), 
-	back_inserter(route));
+   // Anm. istream_iterator krÃ¤ver att operator>> Ã¤r definierad fÃ¶r
+   // instansieringstypen i frÃ¥ga, dvs Direction i detta fall.
+   copy(istream_iterator<Direction>(is), istream_iterator<Direction>(),
+  back_inserter(route));
 }
 
 void plot_route(int start_line, int start_col, const Route& route)
 {
-   // Initiera standardskärmen (stdscr) - utgörs av terminalfönstret.
+   // Initiera standardskÃ¤rmen (stdscr) - utgÃ¶rs av terminalfÃ¶nstret.
    initscr();
 
-   // Kontrollera att startpositionen hamnar inom skärmen.
+   // Kontrollera att startpositionen hamnar inom skÃ¤rmen.
    if (start_line < 0 || start_line >= LINES || start_col < 0 || start_col >= COLS)
    {
       cout << "Terminalen rymmer inte startpositionen\n";
       exit(3);
    }
 
-   // Rama in skärmen.
+   // Rama in skÃ¤rmen.
    wborder(stdscr, '|', '|', '-', '-', '+', '+', '+', '+');
-   // Göm markören.
+   // GÃ¶m markÃ¶ren.
    curs_set(0);
    // Skriv ut ett 'S' i startpositionen.
    wmove(stdscr, start_line, start_col);
    echochar('S');
-   // Vänta 1 sek (1000 ms) i startpositionen.
+   // VÃ¤nta 1 sek (1000 ms) i startpositionen.
    napms(1000);
 
    Route::const_iterator route_end = route.end();
@@ -112,34 +112,34 @@ void plot_route(int start_line, int start_col, const Route& route)
    {
       if (d == Up)
       {
-	 wmove(stdscr, --line, col);
-	 echochar('.');
+   wmove(stdscr, --line, col);
+   echochar('.');
       }
       else if (d == Down)
       {
-	 wmove(stdscr, ++line, col);
-	 echochar('.'); 
+   wmove(stdscr, ++line, col);
+   echochar('.');
       }
       else if (d == Left)
       {
-	 wmove(stdscr, line, --col);
-	 echochar('.'); 
+   wmove(stdscr, line, --col);
+   echochar('.');
       }
       else if (d == Right)
       {
-	 wmove(stdscr, line, ++col);
-	 echochar('.'); 
+   wmove(stdscr, line, ++col);
+   echochar('.');
       }
-      // Vänta 200 ms innan nästa steg tas.
+      // VÃ¤nta 200 ms innan nÃ¤sta steg tas.
       napms(200);
    }
 
    // Skriv ett 'X' i slutpositionen.
    wmove(stdscr, line, col);
    echochar('X');
-   // Ta fram markören.
+   // Ta fram markÃ¶ren.
    curs_set(1);
-   // Vänta 3 sekunder på inmatning vid getch(), annars fortsätt ändå.
+   // VÃ¤nta 3 sekunder pÃ¥ inmatning vid getch(), annars fortsÃ¤tt Ã¤ndÃ¥.
    halfdelay(30);
    getch();
 

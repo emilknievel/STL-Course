@@ -1,4 +1,4 @@
 10 15
 Up Up Up Right Right Down Down Right Right Right Down Down Left Left
-Down Down Left Left Left Up Up Left Left Left Left Down Down Down Down 
-Down Down Right Right Right Right Right Right Up Up 
+Down Down Left Left Left Up Up Left Left Left Left Down Down Down Down
+Down Down Right Right Right Right Right Right Up Up

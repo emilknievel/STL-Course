@@ -9,13 +9,13 @@ int main()
 {
    Direction d;
 
-   cout << "Ge ett värde av Up, down, Left eller Right i taget "
-	<< "(avbryt med Control-C):\n";
+   cout << "Ge ett vÃ¤rde av Up, down, Left eller Right i taget "
+  << "(avbryt med Control-C):\n";
 
    while (true)
    {
       cin >> d;
-      cout << "Värdet var: " << d << '\n';
+      cout << "VÃ¤rdet var: " << d << '\n';
    }
 
    return 0;
