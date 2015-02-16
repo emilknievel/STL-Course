@@ -16,6 +16,11 @@ std::ostream& operator<<(std::ostream& os, const Direction& dir)
          break;
       case Right:
          os << "Right";
+         break;
+      default:
+         // 5.
+         throw bad_direction("dåligt värde");
    }
+
    return os;
 }
