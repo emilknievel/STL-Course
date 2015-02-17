@@ -3,6 +3,8 @@
 #include <vector>
 #include <iomanip>
 #include <fstream>
+#include <iterator>
+#include <utility>
 
 using namespace std;
 
@@ -14,8 +16,8 @@ struct Word_Entry {
 using Word_List = vector<Word_Entry>;
 
 string lower_case(string str);
-void insert(string ord, Word_List& ordlista);
-void print(Word_List ordlista);
+void insert(const string& ord, Word_List& ordlista);
+void print(const Word_List& ordlista);
 
 int main(int argc, char* argv[])
 {
@@ -42,7 +44,6 @@ int main(int argc, char* argv[])
     while(file >> inword)
     {
         insert(lower_case(inword), wl);
-        inword = "";
     }
     file.close();
 
@@ -60,16 +61,16 @@ string lower_case(string str)
     return str;
 }
 
-void print(Word_List ordlista)
+void print(const Word_List& ordlista)
 {
-    for (auto it = begin(ordlista); it != end(ordlista); ++it)
+    for (auto it = ordlista.cbegin(); it != ordlista.cend(); ++it)
     {
         cout << setw(20) << right << it->word << "  " << left
              << it->word_count << endl;
     }
 }
 
-void insert(string ord, Word_List& ordlista)
+void insert(const string& ord, Word_List& ordlista)
 {
     if (ordlista.empty())
     {
@@ -79,6 +80,7 @@ void insert(string ord, Word_List& ordlista)
 
     for (auto it = begin(ordlista); it != end(ordlista); ++it)
     {
+
         if (it->word == ord)
         {
             it->word_count++;
@@ -87,13 +89,21 @@ void insert(string ord, Word_List& ordlista)
 
         else if (it->word > ord) // Rätt plats funnen
         {
-            Word_List temp(make_move_iterator(it),
-			   make_move_iterator(end(ordlista)));
+            Word_Entry entry{ ord ,1 };
 
-            ordlista.erase(it, end(ordlista));
-            ordlista.push_back( {ord, 1} );
+            // Markera plats för nytt element
+            int index = distance(begin(ordlista), it);
 
-            copy(begin(temp), end(temp), back_inserter(ordlista));
+            ordlista.resize(ordlista.size() + 1);
+
+            for (unsigned i = ordlista.size() - 1;
+                 i > static_cast<unsigned>(index); --i)
+            {
+                // Flytta elementen ett steg åt höger
+                swap(ordlista.at(i), ordlista.at(i - 1));
+            }
+            // Nytt element på rätt plats
+            ordlista.at(index) = entry;
             return;
         }
     }

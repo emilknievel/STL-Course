@@ -25,8 +25,8 @@ private:
 using Word_List = vector<Word_Entry>;
 
 string lower_case(string str);
-void insert(string ord, Word_List& ordlista);
-void print(Word_List ordlista);
+void insert(const string& ord, Word_List& ordlista);
+void print(const Word_List& ordlista);
 
 int main(int argc, char* argv[])
 {
@@ -53,7 +53,6 @@ int main(int argc, char* argv[])
     while(file >> inword)
     {
         insert(lower_case(inword), wl);
-        inword = "";
     }
     file.close();
 
@@ -71,7 +70,7 @@ string lower_case(string str)
     return str;
 }
 
-void print(Word_List ordlista)
+void print(const Word_List& ordlista)
 {
     for (Word_Entry entry : ordlista)
     {
@@ -80,13 +79,13 @@ void print(Word_List ordlista)
     }
 }
 
-void insert(string ord, Word_List& ordlista)
+void insert(const string& ord, Word_List& ordlista)
 {
     if (ordlista.empty())
     {
-	Word_Entry* entry = new Word_Entry(ord);
-	ordlista.push_back( *entry );
-	return;
+	     Word_Entry entry(ord);
+	     ordlista.push_back(entry);
+	     return;
     }
 
     for (auto it = begin(ordlista); it != end(ordlista); ++it)
@@ -99,13 +98,13 @@ void insert(string ord, Word_List& ordlista)
 
         else if (it->get_word() > ord) // Hittat rätt plats!
         {
-	    Word_Entry* entry = new Word_Entry(ord);
-	    ordlista.insert(it, *entry);
+	         Word_Entry entry(ord);
+	         ordlista.insert(it, entry);
             return;
         }
     }
 
-    Word_Entry* entry = new Word_Entry(ord);
-    ordlista.push_back( *entry );
+    Word_Entry entry(ord);
+    ordlista.push_back(entry);
     return;
 }
