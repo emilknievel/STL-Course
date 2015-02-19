@@ -6,13 +6,16 @@
 #ifndef DIRECTION_H
 #define DIRECTION_H
 
-#include <ostream>
+#include <iostream>
 #include <stdexcept>
 
 enum Direction { Up, Down, Left, Right };
 
 // 2.
 std::ostream& operator<<(std::ostream& os, const Direction& dir);
+
+// 6.
+//std::istream& operator>>(std::istream& is, Direction& dir);
 
 // 4.
 class bad_direction : public std::logic_error
