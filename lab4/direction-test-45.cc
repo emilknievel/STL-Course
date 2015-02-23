@@ -10,14 +10,22 @@ int main()
    // Notera asymmetrin: automatisk typomvandling från uppräkningstyp
    // till int men inte tvärt om - explicit typomvandling krävs då.
 
-   for (Direction d = Up; d <= Right; d = static_cast<Direction>(d + 1))
+   // 5.
+   try
    {
-      cout << d << '\n';
+      for (Direction d = Up; d <= Right; d = static_cast<Direction>(d + 1))
+      {
+         cout << d << '\n';
+      }
+
+      cout << Direction(Up - 1) << '\n';
+
+      cout << Direction(Right + 1) << '\n';
    }
-
-   cout << Direction(Up - 1) << '\n';
-
-   cout << Direction(Right + 1) << '\n';
+   catch (const bad_direction& e)
+   {
+      cout << "bad_direction: " << e.what() << '\n';
+   }
 
    return 0;
 }

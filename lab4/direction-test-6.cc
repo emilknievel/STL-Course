@@ -14,8 +14,16 @@ int main()
 
    while (true)
    {
-      cin >> d;
-      cout << "Värdet var: " << d << '\n';
+      // 6.
+      try
+      {
+         cin >> d;
+         cout << "Värdet var: " << d << '\n';
+      }
+      catch (const bad_direction& e)
+      {
+         cout << "bad_direction: " << e.what() << '\n';
+      }
    }
 
    return 0;
