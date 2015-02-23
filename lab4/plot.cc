@@ -28,9 +28,9 @@
 #include <vector>
 #include <iterator>
 using namespace std;
-using namespace Direction_ns;
+//using namespace Direction_ns;
 
-typedef vector<Direction> Route;
+typedef vector<Direction_ns::Direction> Route; // 9.
 
 void read_route(istream& is, int& start_line, int& start_col, Route& route);
 void plot_route(int start_line, int start_col, const Route& route);
@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
       return 1;
    }
 
-   ifstream input{ argv[1]) };
+   ifstream input{ argv[1] };
 
    if (! input)
    {
@@ -74,6 +74,8 @@ int main(int argc, char* argv[])
 
 void read_route(istream& is, int& start_line, int& start_col, Route& route)
 {
+   using Direction_ns::Direction; // 9.
+
    is >> start_line >> start_col;
 
    // Anm. istream_iterator kräver att operator>> är definierad för
@@ -84,6 +86,12 @@ void read_route(istream& is, int& start_line, int& start_col, Route& route)
 
 void plot_route(int start_line, int start_col, const Route& route)
 {
+   // 9.
+   using Direction_ns::Up;
+   using Direction_ns::Down;
+   using Direction_ns::Left;
+   using Direction_ns::Right;
+
    // Initiera standardskärmen (stdscr) - utgörs av terminalfönstret.
    initscr();
 
