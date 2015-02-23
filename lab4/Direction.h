@@ -15,7 +15,7 @@ enum Direction { Up, Down, Left, Right };
 std::ostream& operator<<(std::ostream& os, const Direction& dir);
 
 // 6.
-//std::istream& operator>>(std::istream& is, Direction& dir);
+std::istream& operator>>(std::istream& is, Direction& dir);
 
 // 4.
 class bad_direction : public std::logic_error

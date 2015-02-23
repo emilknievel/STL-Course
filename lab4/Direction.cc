@@ -34,7 +34,42 @@ std::ostream& operator<<(std::ostream& os, const Direction& dir)
 }
 
 // 6.
-/*std::istream& operator>>(std::istream& is, Direction& dir)
+std::istream& operator>>(std::istream& is, Direction& dir)
 {
+   std::string dirstr;
+   if (is >> dirstr) // Lyckas inläsningen?
+   {
+      try
+      {
+         if (dirstr == "Up")
+         {
+            dir = Up;
+         }
+         else if (dirstr == "Down")
+         {
+            dir = Down;
+         }
+         else if (dirstr == "Left")
+         {
+            dir = Left;
+         }
+         else if (dirstr == "Right")
+         {
+            dir = Right;
+         }
+         else
+         {
+            throw bad_direction(dirstr);
+         }
+      }
+      catch (const bad_direction& e)
+      {
+         std::cerr << "bad_direction: " << e.what() << '\n';
+      }
 
-}*/
+      return is;
+   }
+
+   is.setstate(std::ios_base::failbit); // Regga fel om inläsning misslyckades
+   return is;
+}
