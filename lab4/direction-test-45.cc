@@ -5,6 +5,14 @@
 #include <iostream>
 using namespace std;
 
+// 7.
+using Direction_ns::Direction;
+using Direction_ns::Up;
+using Direction_ns::Down;
+using Direction_ns::Left;
+using Direction_ns::Right;
+using Direction_ns::bad_direction;
+
 int main()
 {
    // Notera asymmetrin: automatisk typomvandling från uppräkningstyp

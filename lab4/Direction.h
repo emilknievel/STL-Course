@@ -9,22 +9,26 @@
 #include <iostream>
 #include <stdexcept>
 
-enum Direction { Up, Down, Left, Right };
-
-// 2.
-std::ostream& operator<<(std::ostream& os, const Direction& dir);
-
-// 6.
-std::istream& operator>>(std::istream& is, Direction& dir);
-
-// 4.
-class bad_direction : public std::logic_error
+// 7.
+namespace Direction_ns
 {
-public:
-   explicit bad_direction(const std::string& what_arg)
-      : std::logic_error(what_arg) {}
-   explicit bad_direction(const char* what_arg)
-      : std::logic_error(what_arg) {}
-};
+   enum Direction { Up, Down, Left, Right };
+
+   // 2.
+   std::ostream& operator<<(std::ostream& os, const Direction& dir);
+
+   // 6.
+   std::istream& operator>>(std::istream& is, Direction& dir);
+
+   // 4.
+   class bad_direction : public std::logic_error
+   {
+   public:
+      explicit bad_direction(const std::string& what_arg)
+         : std::logic_error(what_arg) {}
+      explicit bad_direction(const char* what_arg)
+         : std::logic_error(what_arg) {}
+   };
+} // namespace Direction_ns
 
 #endif /* DIRECTION_H */

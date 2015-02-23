@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-   Direction d;
+   Direction_ns::Direction d; // 7.
 
    cout << "Ge ett värde av Up, down, Left eller Right i taget "
   << "(avbryt med Control-C):\n";
@@ -20,7 +20,7 @@ int main()
          cin >> d;
          cout << "Värdet var: " << d << '\n';
       }
-      catch (const bad_direction& e)
+      catch (const Direction_ns::bad_direction& e) // 7.
       {
          cout << "bad_direction: " << e.what() << '\n';
       }

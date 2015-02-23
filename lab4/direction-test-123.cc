@@ -5,6 +5,9 @@
 #include <iostream>
 using namespace std;
 
+// 7.
+//using namespace Direction_ns;
+
 int main()
 {
    // Notera asymmetrin: automatisk typomvandling från uppräkningstyp
