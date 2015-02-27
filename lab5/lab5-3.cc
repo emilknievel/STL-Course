@@ -6,15 +6,6 @@
 
 using namespace std;
 
-ostream& operator<<(ostream& os, const map<char, int>& m)
-{
-   for (auto entry : m)
-   {
-      os << entry.first << ": " << entry.second << '\n';
-   }
-   return os;
-}
-
 struct descending
 {
    bool operator()(pair<char, int> p1, pair<char, int> p2) const
