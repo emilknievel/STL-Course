@@ -8,13 +8,38 @@ using namespace std;
 const string GILTIGT_STARTTECKEN {'"', '('};
 const string GILTIGT_SLUTTECKEN  {'"', ',', '.', ':', ';',
                                   '?', '!', ')', '\''};
-const unsigned int MAX_TECKEN {72}; // Maximalt antal tecken per rad.
-
-// Håller koll på antalet tecken per rad.
-unsigned int char_count{0};
 
 bool less_tolower(string s1, string s2);
-void print_word(const string& str);
+
+class print_word
+{
+public:
+   print_word() = default;
+   print_word(const unsigned int& teckenmax)
+      : MAX_TECKEN{teckenmax}, char_count{0}
+   {}
+
+   void operator()(const string& ord)
+   {
+      char_count += ord.length() + 1; // öka med ordlängd + mellanrum
+
+      if (char_count > MAX_TECKEN)
+      {
+         cout << '\n' << ord << " ";
+         char_count = ord.length() + 1;
+      }
+      else
+      {
+         cout << ord << " ";
+      }
+   }
+
+private:
+   // Maximalt antal tecken per rad.
+   const unsigned int MAX_TECKEN {72};
+   // Håller koll på antalet tecken per rad.
+   unsigned int char_count {0};
+};
 
 int main()
 {
@@ -63,7 +88,7 @@ int main()
    ordv.erase(unique(ordv.begin(), ordv.end()), ordv.end());
 
    // Skriv ut orden
-   for_each(ordv.cbegin(), ordv.cend(), print_word);
+   for_each(ordv.cbegin(), ordv.cend(), print_word{});
 
    cout << endl;
 
@@ -82,18 +107,4 @@ bool less_tolower(string s1, string s2)
    }
 
    return s1 < s2;
-}
-
-void print_word(const string& ord)
-{
-   char_count += ord.length() + 1; // öka med ordlängd + mellanrum
-   if (char_count > MAX_TECKEN)
-   {
-      cout << '\n' << ord << " ";
-      char_count = ord.length() + 1;
-   }
-   else
-   {
-      cout << ord << " ";
-   }
 }
