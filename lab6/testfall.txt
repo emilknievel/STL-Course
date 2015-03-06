@@ -1,0 +1,17 @@
+testfall
+
+(hej) -> hej
+
+"Emil" -> Emil
+
+,då -> inget
+
+Pelle, -> Pelle
+
+Carl-Johan -> Carl-Johan
+
+Pelle--Tomas -> inget
+-Pelle-Tomas -> inget
+Pelle-Tomas- -> inget
+Det var en gång en bil tillhörde företaget Bo-Jönssons' Bil AB som köptes upp
+av Big Car Steve's i Oklahoma.
