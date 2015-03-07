@@ -72,14 +72,8 @@ int main()
 
 bool less_tolower(string s1, string s2)
 {
-   for (char& c1 : s1)
-   {
-      c1 = tolower(c1);
-   }
-   for (char& c2 : s2)
-   {
-      c2 = tolower(c2);
-   }
+   transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
+   transform(s2.begin(), s2.end(), s2.begin(), ::tolower);
 
    return s1 < s2;
 }
