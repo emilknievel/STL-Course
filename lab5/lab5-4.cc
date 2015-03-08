@@ -24,14 +24,8 @@ int main()
    {
       letter = toupper(letter); // tolka alla bokstäver som stora
 
-      if (m.count(letter) == 0)
-      {
-         m.insert(make_pair(letter, 1)); // sätt in den nya bokstaven
-      }
-      else
-      {
-         m.at(letter)++; // öka antalet med 1
-      }
+      pair<map<char, int>::iterator, bool> check { m.emplace(letter, 1) };
+      if (!check.second) ++check.first->second;
    }
 
    vector< pair<char, int> > v(m.size());
