@@ -6,11 +6,7 @@
 
 using namespace std;
 
-bool descending(pair<char, int> p1, pair<char, int> p2)
-{
-   return p1.second < p2.second ||
-         (!(p2.second < p1.second) && p1.first < p2.first);
-}
+bool descending(const pair<char, int>& p1, const pair<char, int>& p2);
 
 int main()
 {
@@ -43,4 +39,10 @@ int main()
    }
 
    return 0;
+}
+
+bool descending(const pair<char, int>& p1, const pair<char, int>& p2)
+{
+   return p1.second > p2.second ||
+         (!(p2.second > p1.second) && p1.first < p2.first);
 }

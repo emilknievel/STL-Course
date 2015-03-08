@@ -8,10 +8,10 @@ using namespace std;
 
 struct descending
 {
-   bool operator()(pair<char, int> p1, pair<char, int> p2) const
+   bool operator()(const pair<char, int>& p1, const pair<char, int>& p2) const
    {
-      return p1.second < p2.second ||
-            (!(p2.second < p1.second) && p1.first < p2.first);
+      return p1.second > p2.second ||
+            (!(p2.second > p1.second) && p1.first < p2.first);
    }
 
    using first_argument_type = pair<char, int>;

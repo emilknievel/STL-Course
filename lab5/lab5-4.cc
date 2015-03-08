@@ -42,7 +42,7 @@ int main()
    // jämföra dubbelt som tidigare med descending.
    stable_sort(begin(v), end(v),
                [](pair<char, int> const &p1, pair<char, int> const &p2)->bool
-                  { return p1.second < p2.second; });
+                  { return p1.second > p2.second; });
 
    cout << "Utskrift av map: " << '\n';
    copy(begin(m), end(m), ostream_iterator< pair<char, int> >{cout, "\n"});
