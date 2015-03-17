@@ -10,10 +10,6 @@ const string GILTIGT_SLUTTECKEN  {'"', ',', '.', ':', ';',
                                   '?', '!', ')', '\''};
 const unsigned int MAX_TECKEN {72}; // Maximalt antal tecken per rad.
 
-// Håller koll på antalet tecken per rad.
-unsigned int char_count{0};
-
-bool less_tolower(string s1, string s2);
 void print_word(const string& str);
 
 int main()
@@ -49,7 +45,11 @@ int main()
          if ((ord.length() >= 2)    &&
              (ord.front()  != '-')  &&
              (ord.back()   != '-')  &&
-             (count(ord.cbegin(), ord.cend(), '-') <= 1))
+			 (adjacent_find(ord.cbegin(), ord.cend(),
+				[](char a, char b)
+				{
+				   return (a == '-') && (b == '-');
+				}) == ord.cend()))
          {
             ordv.push_back(ord);
          }
@@ -57,7 +57,7 @@ int main()
    }
 
    // Sortera
-   sort(ordv.begin(), ordv.end(), less_tolower);
+   sort(ordv.begin(), ordv.end());
 
    // Ta bort dubletter
    ordv.erase(unique(ordv.begin(), ordv.end()), ordv.end());
@@ -70,17 +70,11 @@ int main()
    return 0;
 }
 
-bool less_tolower(string s1, string s2)
-{
-   transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
-   transform(s2.begin(), s2.end(), s2.begin(), ::tolower);
-
-   return s1 < s2;
-}
-
 void print_word(const string& ord)
 {
+   static unsigned int char_count{ 0 };
    char_count += ord.length() + 1; // öka med ordlängd + mellanrum
+
    if (char_count > MAX_TECKEN)
    {
       cout << '\n' << ord << " ";
