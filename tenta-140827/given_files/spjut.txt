@@ -1,0 +1,48 @@
+Hjálmsdóttir, Ásdís;  55.55
+Eisenlauer, Esther;   53.52
+Klime Ová, Jarmila;   55.89
+Patterson Kara;       58.25
+Palameika, Madara;    60.72
+Sayers,  Goldie;      61.29
+Obergföll, Christina; 60.19
+Spotáková, Barbora;   63.72
+Hjálmsdóttir, Ásdís;  56.86
+Eisenlauer, Esther;   56.50
+Klime Ová, Jarmila;   57.77
+Patterson Kara;       55.41
+Palameika, Madara;    56.33
+Sayers,  Goldie;      60.35
+Obergföll, Christina; 63.63
+Spotáková, Barbora;   62.81
+Hjálmsdóttir, Ásdís;  56.73
+Eisenlauer, Esther;   0.0  
+Klime Ová, Jarmila;   58.05
+Patterson Kara;       0.0  
+Palameika, Madara;    0.0  
+Sayers,  Goldie;      61.06
+Obergföll, Christina; 66.13
+Spotáková, Barbora;   64.26
+Hjálmsdóttir, Ásdís;  57.77
+Eisenlauer, Esther;   0.0  
+Klime Ová, Jarmila;   0.0  
+Patterson Kara;       58.07
+Palameika, Madara;    0.0  
+Sayers,  Goldie;      0.0  
+Obergföll, Christina; 65.15
+Spotáková, Barbora;   0.0  
+Hjálmsdóttir, Ásdís;  0.0  
+Eisenlauer, Esther;   52.17
+Klime Ová, Jarmila;   0.0  
+Patterson Kara;       0.0  
+Palameika, Madara;    0.0  
+Sayers,  Goldie;      0.0  
+Obergföll, Christina; 66.74
+Spotáková, Barbora;   66.41
+Hjálmsdóttir, Ásdís;  57.36
+Eisenlauer, Esther;   0.0
+Klime Ová, Jarmila;   0.0
+Patterson Kara;       0.0
+Palameika, Madara;    0.0
+Sayers,  Goldie;      63.41
+Obergföll, Christina; 65.73
+Spotáková, Barbora;   0.0
