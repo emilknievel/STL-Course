@@ -7,6 +7,41 @@ using namespace std;
 enum Weekday { Mon, Tue, Wed, Thu, Fri, Sat, Sun };
 
 // Definiera operatorerna här
+ostream& operator<<(ostream& os, const Weekday& w)
+{
+    switch (w)
+    {
+    case Mon:
+	os << "Mon"; break;
+    case Tue:
+	os << "Tue"; break;
+    case Wed:
+	os << "Wed"; break;
+    case Thu:
+	os << "Thu"; break;
+    case Fri:
+	os << "Fri"; break;
+    case Sat:
+	os << "Sat"; break;
+    case Sun:
+	os << "Sun"; break;
+    default:
+	os << "NaWeekday"; break;
+    }
+    return os;
+}
+
+Weekday& operator++(Weekday& w)
+{
+    return w = (w == Sun) ? Mon : Weekday(w+1);
+}
+
+Weekday operator++(Weekday& w, int)
+{
+    Weekday tmp(w);
+    ++w;
+    return tmp;
+}
 
 int main()
 {
